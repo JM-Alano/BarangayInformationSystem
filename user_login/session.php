@@ -8,7 +8,7 @@
                 window.location.href = '/BIS/user_login/user_login_page.php'
             </script>";
           }
-          
+       
 
           if (empty($_SESSION['user_id'])){
             // set default session invalid

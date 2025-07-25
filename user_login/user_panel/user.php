@@ -24,7 +24,7 @@
         require('select_data_db.php');
         require('db_data_user.php');
 
-
+   
     
 
     ?>
@@ -50,7 +50,7 @@
 
 
             <ul class = "nav_list">
-            
+              
                     <li>
                         <a href="user.php" id = "selected">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" transform: ;msFilter:;"><path d="M4 13h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1zm-1 7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v4zm10 0a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v7zm1-10h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1z"></path></svg><span class = "link_name">Dashboard</span></a>
@@ -287,7 +287,7 @@
 
                let verify_user = document.getElementById("verify_user").textContent.trim();
 
-    if (verify_user = "Not Verified") {
+    if (verify_user == "Not Verified") {
         // Block of code to be executed if the user is not verified
         let svgIcon_phone = `
             <svg style="width:20px; margin-top:20px; margin-right:20px; margin-left:10px; fill:red;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -297,7 +297,7 @@
         document.getElementById("verify_display").innerHTML = svgIcon_phone + verify_user;
         document.getElementById("verify_display").style.color = "red";
 
-    } else if (verify_user = "Verified") {
+    } else if (verify_user == "Verified") {
         // Block of code to be executed if the user is verified
         let svgIcon_phone = `
             <svg style="width:20px; margin-top:20px; margin-right:20px; margin-left:10px; fill:#4A9D4f;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

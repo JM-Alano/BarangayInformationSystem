@@ -1,86 +1,63 @@
 <?php
-    require('../database/conn_db.php');
+require('../database/conn_db.php');
 
+if (isset($_POST['registration'])) {
+    $firstname = trim($_POST['fname']);
+    $middlename = trim($_POST['mname']);
+    $lastname = trim($_POST['lname']);
+    $gender = trim($_POST['gender']);
+    $age = trim($_POST['age']);
+    $email = trim($_POST['ename']);
+    $password = trim($_POST['pword']);
+    $confirm_pword = trim($_POST['confirm_pword']);
+    $profile_default = trim($_POST['profile_default']);
+    $verify = trim($_POST['verify']);
 
-    if (isset($_POST['registraion'])) {
-        $firstname = trim($_POST['fname']);
-        $middlename = trim($_POST['mname']);
-        $lastname = trim($_POST['lname']);
+    date_default_timezone_set("Asia/Manila");
+    $date_issue = date("Y-m-d");
 
-        $gender = trim($_POST['gender']); 
-        $age = trim($_POST['age']);
+    // Check if passwords match
+    if ($password !== $confirm_pword) {
+        echo "<script>alert('Passwords do not match.');
+            window.location.href = '/BIS/user_login/user_login_page.php';
+        </script>";
+        exit;
+    }
 
-        $email = trim($_POST['ename']);
-        $password = trim($_POST['pword']);
-        $confirm_pword = trim($_POST['confirm_pword']);
+    // Check if email or name already exists
+    $checkQuery = "SELECT COUNT(*) AS c FROM user_account WHERE (firstname = ? AND lastname = ?) OR email = ?";
+    $stmt = $conn->prepare($checkQuery);
+    $stmt->bind_param("sss", $firstname, $lastname, $email);
+    $stmt->execute();
+    $stmt->bind_result($count);
+    $stmt->fetch();
+    $stmt->close();
 
-        $profile_default = trim($_POST['profile_default']);
-        
-        $verify = trim($_POST['verify']);
+    if ($count > 0) {
+        echo "<script>alert('Name or Email already exists.');
+            window.location.href = '/BIS/user_login/user_login_page.php';
+        </script>";
+        exit;
+    }
 
-        date_default_timezone_set("Asia/Manila");
-        $date_issue = date("Y-m-d");
-        
+    // Hash the password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-            if($password != $confirm_pword){
-          
-            
-                echo"
-                   <script> 
-                       window.location.href = '/BIS/user_login/user_login_page.php';
-                    </script> ";
+    // Insert new user into database
+    $insertQuery = "INSERT INTO user_account (firstname, middlename, lastname, email, password, gender, age, date_registered, profile, verify)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($insertQuery);
+    $stmt->bind_param("ssssssisss", $firstname, $middlename, $lastname, $email, $hashed_password, $gender, $age, $date_issue, $profile_default, $verify);
 
-                    
-                   
-         }else {
+    if ($stmt->execute()) {
+        echo "<script>alert('Registration successful.');
+            window.location.href = '/BIS/user_login/user_login_page.php';
+        </script>";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
 
-
-            if (true) {
-
-                  
-            $checkQuerys = "SELECT COUNT(*) AS c FROM  user_account WHERE  (firstname = '$firstname' AND lastname = '$lastname') OR email = '$email'";
-            $results = mysqli_query($conn, $checkQuerys);
-            $row = mysqli_fetch_assoc($results);
-
-            if ($row['c'] == 0) {
-                    // Insert new record if date is unique
-                $query = "INSERT INTO user_account (firstname, middlename, lastname, email, password, gender, age, date_registered, profile , verify)
-                VALUES ('$firstname', '$middlename', '$lastname', '$email', '$password' , '$gender', '$age', '$date_issue', '$profile_default' , '$verify')";
-
-
-                    if (mysqli_query($conn, $query)) {
-                        echo "<script>
-                        alert('Successfully.');
-                        window.location.href = '/BIS/user_login/user_login_page.php';
-                        </script>";
-                    } else {
-                        echo "Error: " . mysqli_error($conn);
-                    }
-            }
-            
-            else{
-
-                echo "<script>alert('Name OR Email already Exists.');
-                window.location.href = '/BIS/user_login/user_login_page.php';
-                 </script>";
-                 
-            }
-
-           
-
-                
-            }else{
-               
-
-                echo "<script>alert('No resident records were found.');
-                window.location.href = '/BIS/user_login/user_login_page.php';
-                 </script>";
-            }
-
-            // Close connection
-            mysqli_close($conn);
-        
-         }
-        }
-
+    $stmt->close();
+    $conn->close();
+}
 ?>

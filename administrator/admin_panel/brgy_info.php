@@ -169,7 +169,7 @@
         
     </div>
     
-    <div>
+    <div >
 
     <input type="submit" name="upload" value="UPLOAD" id = "submit_div">
     </div>

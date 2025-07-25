@@ -62,10 +62,10 @@
         <label for="">Email</label><br>
         <input name = "email_edit" type="email" placeholder ="Enter Email" id = "email_edit" ><br>
 
-            <label for="">Password</label><br>
-            <input name = "password_edit" type="password" id = "password_edit" placeholder ="Enter Password" style = "cursor: no-drop;"readonly>
+            <label hidden for="">Password</label><br>
+            <input type = "hidden" name = "password_edit" type="password" id = "password_edit" placeholder ="Enter Password" style = "cursor: no-drop;"readonly>
         
-            <input type="checkbox" id = "checkbox_edit" onclick="show_pwd_edit()"><br>
+            <input hidden type="checkbox" id = "checkbox_edit" onclick="show_pwd_edit()"><br>
       
     </div>
 

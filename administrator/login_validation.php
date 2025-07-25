@@ -23,33 +23,33 @@ if (isset($_POST['login'])) {
             </script>";
     } else {
         // Use a prepared statement to prevent SQL injection
-        $query = "SELECT * FROM admin_account WHERE password = ? AND email = ?";
+         $query = "SELECT * FROM admin_account WHERE email = ?";
         
-        // Prepare the SQL statement
-        if ($stmt = mysqli_prepare($conn, $query)) {
-            // Bind parameters to the prepared statement
-            mysqli_stmt_bind_param($stmt, "ss", $password ,  $email);
-            
-            // Execute the statement
+       if ($stmt = mysqli_prepare($conn, $query)) {
+            mysqli_stmt_bind_param($stmt, "s", $email);
             mysqli_stmt_execute($stmt);
-            
-            // Get the result
             $result = mysqli_stmt_get_result($stmt);
-            
-            // Check if a row was returned (valid login)
-            if (mysqli_num_rows($result) > 0) {
-                $rowValidate = mysqli_fetch_array($result);
-                
-                $_SESSION['status'] = 'valid';
-                $_SESSION['admin_id'] = $rowValidate['user_id'];
-                
-                header('location: loading.php');
+
+            if ($row = mysqli_fetch_array($result)) {
+                // Verify password
+                if (password_verify($password, $row['password'])) {
+                    $_SESSION['status'] = 'valid';
+                    $_SESSION['admin_id'] = $row['user_id'];
+                    header('Location: loading.php');
+                    exit;
+                } else {
+                    // Incorrect password
+                    $_SESSION['status_input'] = 'invalid_input';
+                    echo "Incorrect password.";
+                      echo "<script>document.getElementById('validation').style.display = 'block';</script>";
+                }
             } else {
+                // No user found with that email
                 $_SESSION['status'] = 'invalid';
-                echo "Invalid Credential do not match our records. ";
-                echo "<script>document.getElementById('validation').style.display = 'block'</script>";
+                echo "Invalid credentials. Email not found.";
+                echo "<script>document.getElementById('validation').style.display = 'block';</script>";
             }
-            
+
             // Close the prepared statement
             mysqli_stmt_close($stmt);
         } else {

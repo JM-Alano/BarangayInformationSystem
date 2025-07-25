@@ -446,7 +446,7 @@
          
 
             <input type="hidden" id = "id_view_doc">
-           <img src="" alt="" id="image_photo_view" style="width: 800px; height: 100%; margin: 50px 80px 50px 50px; border-radius:4px; ">
+           <img src="" alt="No Document uploaded" id="image_photo_view" style="width: 800px; height: 100%; margin: 50px 80px 50px 50px; border-radius:4px; ">
 
         </div>
     </div>

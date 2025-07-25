@@ -2044,16 +2044,19 @@ html {
     .form_registration .item4 input{
         font-size: 1rem;
         padding: 5px;
-        width: 200px;
+        width: 150px;
         color: var(--bg-color);
         cursor: pointer;
     }
     .form_registration .item4 #submit_btn{
         background-color: #4A9D4f;
+        padding: 1px;
+        margin-left: 5px;
         
     }
     .form_registration .item4 #reset{
         background-color: rgb(0, 183, 255);
+         padding: 1px;
     }
     .form_registration .item4 #submit_btn:focus{
         outline: solid 3px #4A9D4f;

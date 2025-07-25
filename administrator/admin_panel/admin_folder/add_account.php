@@ -51,11 +51,12 @@
               $newImageName .= '.' . $imageExtension;
   
               move_uploaded_file($tmpName, '../../../asset/image/admin/'. $newImageName );
-  
+                // Hash the password
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
              
               $sql = "INSERT INTO admin_account (firstname, middlename, lastname, gender, age, date_created, status, email, password, admin_profile, user_type )
-              VALUES ('$firstname', '$middlename', '$lastname','$gender','$age','$date_created','$status','$email','$password', '$newImageName', '$user_type')";
-  
+              VALUES ('$firstname', '$middlename', '$lastname','$gender','$age','$date_created','$status','$email','$hashed_password', '$newImageName', '$user_type')";
+
               $result = mysqli_query($conn, $sql);
   
   

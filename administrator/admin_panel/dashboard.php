@@ -1,5 +1,3 @@
-    
-  
 
 <!DOCTYPE html>
 <html lang="en">
@@ -137,7 +135,7 @@
     .first_div_header{
       display:flex;
       justify-content:space-between;
-      background-color: #4B9D4E;
+      background-color: #f3f3f3ff;
       margin-top:20px;
       margin-left:40px;
       border-radius:8px;

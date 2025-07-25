@@ -119,6 +119,8 @@
         </tr>
 
         <?php while ($row = $result->fetch_assoc()): ?>
+
+        
         <tr class="table_hover">
             <td hidden><?php echo $row["firstname"]; ?></td>
             <td hidden><?php echo $row["middlename"]; ?></td>
@@ -130,7 +132,7 @@
             <td hidden><?php echo $row["status"]; ?></td>
             <td hidden><?php echo $row["email"]; ?></td>
             <td hidden><?php echo $row["email"]; ?></td>
-            <td hidden><?php echo $row["password"]; ?></td>
+            <td hidden><?php echo $password;  ?></td>
             <td hidden><?php echo "../../asset/image/admin/" . $row["admin_profile"]; ?></td>
 
             <td class="img"><img src="../../asset/image/admin/<?php echo $row['admin_profile']; ?>" alt="" width="50" /></td>

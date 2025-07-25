@@ -6,7 +6,7 @@
         include 'maintenance.php';
         exit;
     }
-// Rest of your index.php code...
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +56,7 @@
            
             </div>
             <div class = "btn_e-barangay">
-                <a href="user_login/user_login_page.php"><button id="loginButton" class = "svg_login">LOGIN</button></a>
+                <a href="user_login/user_login_page.php"><button id="loginButton" class = "svg_login">Sign In</button></a>
             </div>
             
             <?php
