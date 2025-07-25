@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2025 at 06:53 AM
+-- Generation Time: Jul 25, 2025 at 05:11 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.1.25
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,6 @@ CREATE TABLE `admin_account` (
   `middlename` varchar(200) NOT NULL,
   `lastname` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
-  `username` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL,
   `date_created` date NOT NULL,
   `admin_profile` varchar(200) NOT NULL,
@@ -47,10 +46,8 @@ CREATE TABLE `admin_account` (
 -- Dumping data for table `admin_account`
 --
 
-INSERT INTO `admin_account` (`user_id`, `user_type`, `firstname`, `middlename`, `lastname`, `email`, `username`, `password`, `date_created`, `admin_profile`, `gender`, `age`, `status`) VALUES
-(82, 'ADMINISTRATOR', 'Alex', 'Peralta', 'Peralta', 'tmc.jenmar.alano@cvsu.edu.ph', 'admin', 'JMalano0411', '2025-03-22', '680e0c775d71e.jpg', 'Female', 25, 1),
-(84, 'ADMINISTRATOR', 'Alex', 'Peralta', 'Peralta', 'tmc.jenmar.alano@cvsu.edu.ph', 'admin', 'admin', '2025-03-22', '6813640dc4c09.jpg', 'Female', 25, 1),
-(85, 'ADMINISTRATOR', 'Niel', 'Acantilado', 'Alegiojo', 'niel@gmail.com', '', 'niel', '2025-04-01', '680e0c7eae714.jpg', 'Male', 23, 1);
+INSERT INTO `admin_account` (`user_id`, `user_type`, `firstname`, `middlename`, `lastname`, `email`, `password`, `date_created`, `admin_profile`, `gender`, `age`, `status`) VALUES
+(87, 'ADMINISTRATOR', 'Jenmar', 'adas', 'Alano', 'tmc.jenmar.alano@cvsu.edu.ph', '$2y$10$5Z6X.E9YO8UZ256Bc1EZzODkz5KIfErSXmEkJaEuFwzKb6.Wanzxm', '2025-07-25', '68839024e9c66.jpg', 'Male', 23, 1);
 
 -- --------------------------------------------------------
 
@@ -138,8 +135,7 @@ INSERT INTO `barangay_blotter` (`subject`, `cell_no`, `place`, `tanod`, `date`, 
 ('Bullying', '09890123456', 'School', 'Miguel Torres', '2025-04-05', '03:30:00', 'Settled', 55, 'Sophia Johnson', 17, '234 Oak Rd', 'David Adams', 'None', 'Repeated bullying at school', 'Personal'),
 ('Assault', '09678901234', 'Restaurant', 'Ana Martinez', '2025-04-04', '01:15:00', 'Settled', 56, 'Robert Green', 38, '567 Elm St', 'John Fisher', 'None', 'Physical altercation between two customers', 'Violence'),
 ('Harassment', '09456789012', 'School', 'Antonio Cruz', '2025-04-03', '11:00:00', 'Settled', 57, 'James Smith', 16, '321 Maple Rd', 'Ryan Clark', 'None', 'Verbal harassment by a classmate', 'Personal'),
-('Vandalism', '09234567890', 'Mall', 'Pedro Reyes', '2025-04-02', '09:30:00', 'Scheduled', 58, 'John Doe', 32, '456 Oak Ave', 'Carlos Ramirez', 'None', 'Graffiti on the walls', 'Property'),
-('Vandalism', '09234567890', 'Mall', 'Pedro Reyes', '2025-04-02', '09:30:00', 'Active', 59, 'John Doe', 32, ' 456 Oak Ave', 'Carlos Ramirez', 'None', 'Graffiti on the walls', 'Property');
+('Vandalism', '09234567890', 'Mall', 'Pedro Reyes', '2025-04-02', '09:30:00', 'Scheduled', 58, 'John Doe', 32, '456 Oak Ave', 'Carlos Ramirez', 'None', 'Graffiti on the walls', 'Property');
 
 -- --------------------------------------------------------
 
@@ -314,27 +310,6 @@ CREATE TABLE `barangay_request` (
   `control_no` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `barangay_request`
---
-
-INSERT INTO `barangay_request` (`firstname`, `middlename`, `lastname`, `age`, `request_document`, `house_number`, `sitio_pook`, `birthday`, `place_of_birth`, `contact_no`, `contact_person`, `contact_no_contact_person`, `live_since_year`, `purpose`, `status`, `gender`, `date_request`, `business_name`, `profile`, `user_id`, `id`, `control_no`) VALUES
-('Addison', 'Faith', 'Phillips', 22, 'Barangay Certificate', '4747', 'Purok 5', '1994-08-11', 'Manila', '09123456828', 'Jhay', '09694911585', '2025-04', 'Education', 'Pending', 'Prefer not to say', '2025-04-29', 'N/A', '680eecf068394.jpg', 50, 42, '400201'),
-('Addison', 'Faith', 'Phillips', 29, 'Barangay Cedula', '4747', 'Purok 5', '1994-08-11', 'Manila', '09123456828', 'Jhay', '09694911585', '2025-04', 'Education', 'Pending', 'Prefer not to say', '2025-04-28', 'N/A', '680eecf068394.jpg', 50, 43, '300142'),
-('Addison', 'Faith', 'Phillips', 29, 'Barangay Certificate', '4747', 'Purok 5', '1994-08-11', 'Manila', '09123456828', 'Jhay', '09694911585', '2025-04', 'Education', 'Pending', 'Prefer not to say', '2025-04-28', 'N/A', '680eecf068394.jpg', 50, 44, '290125'),
-('Addison', 'Faith', 'Phillips', 29, 'Barangay Clearance', '4747', 'Purok 5', '1994-08-11', 'Manila', '09123456828', 'Jhay', '09694911585', '2025-04', 'Education', 'Pending', 'Female', '2025-04-27', 'N/A', '680e020c5c1ec.png', 50, 46, '0622'),
-('Addison', 'Faith', 'Phillips', 29, 'Barangay Certificate', '4747', 'Purok 5', '1994-08-11', 'Manila', '09123456828', 'Jhay', '09694911585', '2025-04', 'Education', 'Pending', 'Female', '2025-04-27', 'N/A', '680e020c5c1ec.png', 50, 47, '90630'),
-('Addison', 'Faith', 'Phillips', 29, 'Barangay ID', '4747', 'Purok 5', '1994-08-11', 'Manila', '09123456828', 'Jhay', '09694911585', '2025-04', 'Education', 'Pending', 'Female', '2025-04-27', 'N/A', '680e020c5c1ec.png', 50, 48, '100636'),
-('Addison', 'Faith', 'Phillips', 29, 'Barangay Indigency', '4747', 'Purok 5', '1994-08-11', 'Manila', '09123456828', 'Jhay', '09694911585', '2025-04', 'Education', 'Pending', 'Prefer not to say', '2025-04-27', 'N/A', '680e020c5c1ec.png', 50, 49, '110725'),
-('Addison', 'Faith', 'Phillips', 29, 'Barangay Certificate', '4747', 'Purok 5', '1994-08-11', 'Manila', '09123456828', 'Jhay', '09694911585', '2025-04', 'Education', 'Pending', 'Prefer not to say', '2025-04-27', 'N/A', '680e020c5c1ec.png', 50, 50, '120737'),
-('Addison', 'Faith', 'Phillips', 29, 'Barangay Certificate', '4747', 'Purok 5', '1994-08-11', 'Manila', '09123456828', 'Jhay', '09694911585', '2025-04', 'Education', 'Pending', 'Prefer not to say', '2025-04-27', 'N/A', '680e020c5c1ec.png', 50, 55, '120737'),
-('Addison', 'Faith', 'Phillips', 29, 'Barangay Indigency', '4747', 'Purok 5', '1994-08-11', 'Manila', '09123456828', 'Jhay', '09694911585', '2025-04', 'Education', 'Pending', 'Prefer not to say', '2025-04-27', 'N/A', '680e020c5c1ec.png', 50, 56, '110725'),
-('Addison', 'Faith', 'Phillips', 29, 'Barangay ID', '4747', 'Purok 5', '1994-08-11', 'Manila', '09123456828', 'Jhay', '09694911585', '2025-04', 'EDUCATIONAL ASSISTANCE', 'Ready to Pick-up', 'Female', '2025-04-27', 'N/A', '680e020c5c1ec.png', 50, 57, '100636'),
-('Addison', 'Faith', 'Phillips', 29, 'Barangay Certificate', '4747', 'Purok 5', '1994-08-11', 'Manila', '09123456828', 'Jhay', '09694911585', '2025-04', 'Education', 'Released', 'Female', '2025-04-27', 'N/A', '680e020c5c1ec.png', 50, 58, '90630'),
-('Addison', 'Faith', 'Phillips', 29, 'Barangay Clearance', '4747', 'Purok 5', '1994-08-11', 'Manila', '09123456828', 'Jhay', '09694911585', '2025-04', 'Education', 'Ready to Pick-up', 'Female', '2025-04-27', 'N/A', '680e020c5c1ec.png', 50, 59, '0622'),
-('Addison', 'Faith', 'Phillips', 22, 'Barangay Indigency', '4747', 'Purok 5', '1994-08-11', 'Manila', '09123456828', 'Jhay', '09694911585', '2025-04', 'Education', 'Pending', 'Prefer not to say', '2025-04-29', 'N/A', '680eecf068394.jpg', 50, 60, '590251'),
-('Jenmar', 'Acantilado', 'Alano', 22, 'Barangay Certificate', 'Blk 18 Lot 2', 'San Francesco', '2025-05-02', 'Manila', '09694911585', 'Jhay', '09694911585', '2025-05', 'Education', 'Ready to Pick-up', 'Male', '2025-05-02', 'N/A', 'images.png', 51, 61, '1153');
-
 -- --------------------------------------------------------
 
 --
@@ -435,41 +410,6 @@ CREATE TABLE `barangay_revenue` (
   `OR_no` bigint(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `barangay_revenue`
---
-
-INSERT INTO `barangay_revenue` (`date_issue`, `expired_date`, `document_amount`, `firstname`, `middlename`, `lastname`, `document_type`, `user_id`, `OR_no`) VALUES
-('2025-04-01', '2026-04-01', 23, 'Addison', 'Faith', 'Phillips', 'Barangay Certificate', 2, 1),
-('2025-04-02', '2026-04-02', 500, 'Addison', 'Faith', 'Phillips', 'Business Permit', 4, 2),
-('2025-04-28', '2026-04-28', 200, 'Addison', 'Faith', 'Phillips', 'Barangay ID', 29, 3),
-('2025-04-28', '2026-04-28', 22, 'Addison', 'Faith', 'Phillips', 'Barangay Certificate', 30, 4),
-('2025-04-28', '2026-04-28', 22, 'Addison', 'Faith', 'Phillips', 'Barangay Certificate', 30, 5),
-('2025-04-28', '2026-04-28', 22, 'Addison', 'Faith', 'Phillips', 'Barangay Certificate', 30, 6),
-('2025-04-28', '2026-04-28', 33, 'Addison', 'Faith', 'Phillips', 'Barangay ID', 29, 7),
-('2025-04-28', '2026-04-28', 33, 'Addison', 'Faith', 'Phillips', 'Barangay ID', 29, 8),
-('2025-04-28', '2026-04-28', 77, 'Addison', 'Faith', 'Phillips', 'Barangay Certificate', 30, 9),
-('2025-04-30', '2026-04-30', 22, 'Addison', 'Faith', 'Phillips', 'Barangay Certificate', 58, 10),
-('2025-05-02', '2026-05-02', 50, 'Jenmar', 'Acantilado', 'Alano', 'Barangay Certificate', 61, 11),
-('2025-05-02', '2026-05-02', 50, 'Jenmar', 'Acantilado', 'Alano', 'Barangay Certificate', 61, 12),
-('2025-05-02', '2026-05-02', 23, 'Addison', 'Faith', 'Phillips', 'Barangay ID', 57, 13),
-('2025-05-02', '2026-05-02', 23, 'Addison', 'Faith', 'Phillips', 'Barangay ID', 57, 14),
-('2025-05-02', '2026-05-02', 23, 'Addison', 'Faith', 'Phillips', 'Barangay ID', 57, 15),
-('2025-05-02', '2026-05-02', 23, 'Addison', 'Faith', 'Phillips', 'Barangay ID', 57, 16),
-('2025-05-02', '2026-05-02', 23, 'Addison', 'Faith', 'Phillips', 'Barangay ID', 57, 17),
-('2025-05-02', '2026-05-02', 22, 'Addison', 'Faith', 'Phillips', 'Barangay ID', 57, 18),
-('2025-05-02', '2026-05-02', 44, 'Addison', 'Faith', 'Phillips', 'Barangay ID', 57, 19),
-('2025-05-02', '2026-05-02', 44, 'Addison', 'Faith', 'Phillips', 'Barangay ID', 57, 20),
-('2025-05-02', '2026-05-02', 33, 'Addison', 'Faith', 'Phillips', 'Barangay ID', 57, 21),
-('2025-05-02', '2026-05-02', 33, 'Addison', 'Faith', 'Phillips', 'Barangay ID', 57, 22),
-('2025-05-02', '2026-05-02', 28, 'Addison', 'Faith', 'Phillips', 'Barangay ID', 57, 23),
-('2025-05-02', '2026-05-02', 28, 'Addison', 'Faith', 'Phillips', 'Barangay ID', 57, 24),
-('2025-05-02', '2026-05-02', 28, 'Addison', 'Faith', 'Phillips', 'Barangay ID', 57, 25),
-('2025-05-02', '2026-05-02', 28, 'Addison', 'Faith', 'Phillips', 'Barangay ID', 57, 26),
-('2025-05-02', '2026-05-02', 28, 'Addison', 'Faith', 'Phillips', 'Barangay ID', 57, 27),
-('2025-05-02', '2026-05-02', 28, 'Addison', 'Faith', 'Phillips', 'Barangay ID', 57, 28),
-('2025-05-02', '2026-05-02', 28, 'Addison', 'Faith', 'Phillips', 'Barangay ID', 57, 29);
-
 -- --------------------------------------------------------
 
 --
@@ -525,6 +465,8 @@ CREATE TABLE `user_account` (
   `sitio_pook` varchar(200) NOT NULL,
   `contact_no` varchar(200) NOT NULL,
   `profile` varchar(200) NOT NULL,
+  `verify` varchar(200) NOT NULL,
+  `support_doc` varchar(200) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -532,58 +474,8 @@ CREATE TABLE `user_account` (
 -- Dumping data for table `user_account`
 --
 
-INSERT INTO `user_account` (`firstname`, `middlename`, `lastname`, `email`, `password`, `gender`, `age`, `birthday`, `date_registered`, `house_no`, `sitio_pook`, `contact_no`, `profile`, `user_id`) VALUES
-('Juan', 'Dela', 'Cruz', 'juan.cruz@email.com', 'juandc123', 'Male', 35, '1988-05-15', '2022-01-10', '123', 'Purok 1', '09123456789', 'juan_profile.jpg', 1),
-('Maria', 'Santos', 'Reyes', 'maria.reyes@email.com', 'mariareyes456', 'Female', 28, '1995-08-22', '2022-01-12', '456', 'Purok 2', '09123456780', 'maria_profile.jpg', 2),
-('Pedro', 'Gonzales', 'Bautista', 'pedro.b@email.com', 'pedrob789', 'Male', 42, '1981-11-05', '2022-01-15', '789', 'Purok 3', '09123456781', 'pedro_profile.jpg', 3),
-('Ana', 'Perez', 'Diaz', 'ana.diaz@email.com', 'anadpass', 'Female', 31, '1992-02-18', '2022-01-18', '101', 'Purok 4', '09123456782', 'ana_profile.jpg', 4),
-('Jose', 'Alvarez', 'Garcia', 'jose.g@email.com', 'josegpass', 'Male', 45, '1978-07-30', '2022-01-20', '202', 'Purok 5', '09123456783', 'jose_profile.jpg', 5),
-('Carmen', 'Lopez', 'Martinez', 'carmen.m@email.com', 'carmenpass', 'Female', 26, '1997-04-14', '2022-01-22', '303', 'Purok 1', '09123456784', 'carmen_profile.jpg', 6),
-('Antonio', 'Castro', 'Sanchez', 'antonio.s@email.com', 'antoniopass', 'Male', 39, '1984-09-19', '2022-01-25', '404', 'Purok 2', '09123456785', 'antonio_profile.jpg', 7),
-('Teresa', 'Fernandez', 'Romero', 'teresa.r@email.com', 'teresapass', 'Female', 33, '1990-12-25', '2022-01-28', '505', 'Purok 3', '09123456786', 'teresa_profile.jpg', 8),
-('Carlos', 'Ramirez', 'Torres', 'carlos.t@email.com', 'carlospass', 'Male', 29, '1994-06-08', '2022-02-01', '606', 'Purok 4', '09123456787', 'carlos_profile.jpg', 9),
-('Elena', 'Gomez', 'Flores', 'elena.f@email.com', 'elenapass', 'Female', 36, '1987-03-17', '2022-02-05', '707', 'Purok 5', '09123456788', 'elena_profile.jpg', 10),
-('Ramon', 'Rivera', 'Mendoza', 'ramon.m@email.com', 'ramonpass', 'Male', 48, '1975-10-31', '2022-02-08', '808', 'Purok 1', '09123456789', 'ramon_profile.jpg', 11),
-('Sofia', 'Vargas', 'Aquino', 'sofia.a@email.com', 'sofiapass', 'Female', 24, '1999-01-28', '2022-02-10', '909', 'Purok 2', '09123456790', 'sofia_profile.jpg', 12),
-('Luis', 'Cruz', 'Ramos', 'luis.r@email.com', 'luispass', 'Male', 37, '1986-07-15', '2022-02-12', '1010', 'Purok 3', '09123456791', 'luis_profile.jpg', 13),
-('Isabel', 'Reyes', 'Ortiz', 'isabel.o@email.com', 'isabelpass', 'Female', 30, '1993-09-22', '2022-02-15', '1111', 'Purok 4', '09123456792', 'isabel_profile.jpg', 14),
-('Fernando', 'Diaz', 'Del Rosario', 'fernando.d@email.com', 'fernandopass', 'Male', 52, '1971-05-17', '2022-02-18', '1212', 'Purok 5', '09123456793', 'fernando_profile.jpg', 15),
-('Mia', 'Santos', 'Villanueva', 'mia.v@email.com', 'miapass', 'Female', 23, '2000-03-08', '2022-02-20', '1313', 'Purok 1', '09123456794', 'mia_profile.jpg', 16),
-('Ethan', 'Alvarez', 'Taylor', 'ethan.t@email.com', 'ethanpass', 'Male', 31, '1992-11-11', '2022-02-22', '1414', 'Purok 2', '09123456795', 'ethan_profile.jpg', 17),
-('Charlotte', 'Louise', 'Moore', 'charlotte.m@email.com', 'charlottepass', 'Female', 35, '1988-08-04', '2022-02-25', '1515', 'Purok 3', '09123456796', 'charlotte_profile.jpg', 18),
-('Ryan', 'Patrick', 'Jackson', 'ryan.j@email.com', 'ryanpass', 'Male', 27, '1996-02-19', '2022-02-28', '1616', 'Purok 4', '09123456797', 'ryan_profile.jpg', 19),
-('Amelia', 'Kate', 'Martin', 'amelia.m@email.com', 'ameliapass', 'Female', 30, '1993-12-25', '2022-03-02', '1717', 'Purok 5', '09123456798', 'amelia_profile.jpg', 20),
-('James', 'Daniel', 'Lee', 'james.l@email.com', 'jamespass', 'Male', 33, '1990-06-30', '2022-03-05', '1818', 'Purok 1', '09123456799', 'james_profile.jpg', 21),
-('Harper', 'Faith', 'Perez', 'harper.p@email.com', 'harperpass', 'Female', 28, '1995-04-14', '2022-03-08', '1919', 'Purok 2', '09123456800', 'harper_profile.jpg', 22),
-('Benjamin', 'Charles', 'Thompson', 'benjamin.t@email.com', 'benjaminpass', 'Male', 41, '1982-10-08', '2022-03-10', '2020', 'Purok 3', '09123456801', 'benjamin_profile.jpg', 23),
-('Evelyn', 'Hope', 'White', 'evelyn.w@email.com', 'evelynpass', 'Female', 29, '1994-09-17', '2022-03-12', '2121', 'Purok 4', '09123456802', 'evelyn_profile.jpg', 24),
-('Nathan', 'Scott', 'Harris', 'nathan.h@email.com', 'nathanpass', 'Male', 34, '1989-07-23', '2022-03-15', '2222', 'Purok 5', '09123456803', 'nathan_profile.jpg', 25),
-('Abigail', 'Ruth', 'Sanchez', 'abigail.s@email.com', 'abigailpass', 'Female', 27, '1996-01-11', '2022-03-18', '2323', 'Purok 1', '09123456804', 'abigail_profile.jpg', 26),
-('Logan', 'Henry', 'Clark', 'logan.c@email.com', 'loganpass', 'Male', 30, '1993-05-29', '2022-03-20', '2424', 'Purok 2', '09123456805', 'logan_profile.jpg', 27),
-('Elizabeth', 'Joy', 'Ramirez', 'elizabeth.r@email.com', 'elizabethpass', 'Female', 32, '1991-12-03', '2022-03-22', '2525', 'Purok 3', '09123456806', 'elizabeth_profile.jpg', 28),
-('Jacob', 'Andrew', 'Lewis', 'jacob.l@email.com', 'jacobpass', 'Male', 28, '1995-08-16', '2022-03-25', '2626', 'Purok 4', '09123456807', 'jacob_profile.jpg', 29),
-('Sofia', 'Claire', 'Robinson', 'sofia.r@email.com', 'sofiapass2', 'Female', 26, '1997-06-07', '2022-03-28', '2727', 'Purok 5', '09123456808', 'sofia2_profile.jpg', 30),
-('William', 'George', 'Walker', 'william.w@email.com', 'williampass', 'Male', 45, '1978-04-12', '2022-03-30', '2828', 'Purok 1', '09123456809', 'william_profile.jpg', 31),
-('Victoria', 'Lynn', 'Young', 'victoria.y@email.com', 'victoriapass', 'Female', 29, '1994-11-21', '2022-04-02', '2929', 'Purok 2', '09123456810', 'victoria_profile.jpg', 32),
-('Samuel', 'Peter', 'Allen', 'samuel.a@email.com', 'samuelpass', 'Male', 31, '1992-02-28', '2022-04-05', '3030', 'Purok 3', '09123456811', 'samuel_profile.jpg', 33),
-('Avery', 'Mae', 'King', 'avery.k@email.com', 'averypass', 'Female', 30, '1993-10-15', '2022-04-08', '3131', 'Purok 4', '09123456812', 'avery_profile.jpg', 34),
-('Jackson', 'Luke', 'Wright', 'jackson.w@email.com', 'jacksonpass', 'Male', 27, '1996-07-04', '2022-04-10', '3232', 'Purok 5', '09123456813', 'jackson_profile.jpg', 35),
-('Scarlett', 'June', 'Scott', 'scarlett.s@email.com', 'scarlettpass', 'Female', 33, '1990-09-19', '2022-04-12', '3333', 'Purok 1', '09123456814', 'scarlett_profile.jpg', 36),
-('Sebastian', 'Mark', 'Torres', 'sebastian.t@email.com', 'sebastianpass', 'Male', 28, '1995-12-24', '2022-04-15', '3434', 'Purok 2', '09123456815', 'sebastian_profile.jpg', 37),
-('Madison', 'Paige', 'Nguyen', 'madison.n@email.com', 'madisonpass', 'Female', 26, '1997-08-09', '2022-04-18', '3535', 'Purok 3', '09123456816', 'madison_profile.jpg', 38),
-('Aiden', 'Ryan', 'Hill', 'aiden.h@email.com', 'aidenpass', 'Male', 32, '1991-05-13', '2022-04-20', '3636', 'Purok 4', '09123456817', 'aiden_profile.jpg', 39),
-('Chloe', 'Dawn', 'Flores', 'chloe.f@email.com', 'chloepass', 'Female', 30, '1993-03-27', '2022-04-22', '3737', 'Purok 5', '09123456818', 'chloe_profile.jpg', 40),
-('Gabriel', 'Christian', 'Green', 'gabriel.g@email.com', 'gabrielpass', 'Male', 29, '1994-01-08', '2022-04-25', '3838', 'Purok 1', '09123456819', 'gabriel_profile.jpg', 41),
-('Lily', 'Anne', 'Adams', 'lily.a@email.com', 'lilypass', 'Female', 31, '1992-10-31', '2022-04-28', '3939', 'Purok 2', '09123456820', 'lily_profile.jpg', 42),
-('Carter', 'John', 'Nelson', 'carter.n@email.com', 'carterpass', 'Male', 34, '1989-07-16', '2022-04-30', '4040', 'Purok 3', '09123456821', 'carter_profile.jpg', 43),
-('Zoey', 'Marie', 'Baker', 'zoey.b@email.com', 'zoeypass', 'Female', 27, '1996-04-05', '2022-05-02', '4141', 'Purok 4', '09123456822', 'zoey_profile.jpg', 44),
-('Julian', 'David', 'Hall', 'julian.h@email.com', 'julianpass', 'Male', 30, '1993-11-18', '2022-05-05', '4242', 'Purok 5', '09123456823', 'julian_profile.jpg', 45),
-('Penelope', 'Grace', 'Rivera', 'penelope.r@email.com', 'penelopepass', 'Female', 32, '1991-02-22', '2022-05-08', '4343', 'Purok 1', '09123456824', 'penelope_profile.jpg', 46),
-('Wyatt', 'Thomas', 'Mitchell', 'wyatt.m@email.com', 'wyattpass', 'Male', 28, '1995-09-14', '2022-05-10', '4444', 'Purok 2', '09123456825', 'wyatt_profile.jpg', 47),
-('Hannah', 'Joyce', 'Carter', 'hannah.c@email.com', 'hannahpass', 'Female', 26, '1997-05-07', '2022-05-12', '4545', 'Purok 3', '09123456826', 'hannah_profile.jpg', 48),
-('Owen', 'Joseph', 'Roberts', 'owen.r@email.com', 'owenpass', 'Male', 35, '1988-12-30', '2022-05-15', '4646', 'Purok 4', '09123456827', 'owen_profile.jpg', 49),
-('Addison', 'Faith', 'Phillips', 'addison.p@email.com', 'JEnmar0411', 'Prefer not to say', 22, '1994-08-11', '2022-05-18', '4747', 'Purok 5', '09123456828', '680eecf068394.jpg', 50),
-('Jenmar', 'Acantilado', 'Alano', 'Jenmar0411@gmail.com', 'Jenmar0411', 'Male', 22, '2025-05-02', '2025-05-01', 'Blk 18 Lot 2', 'San Francesco', '09694911585', 'images.png', 51);
+INSERT INTO `user_account` (`firstname`, `middlename`, `lastname`, `email`, `password`, `gender`, `age`, `birthday`, `date_registered`, `house_no`, `sitio_pook`, `contact_no`, `profile`, `verify`, `support_doc`, `user_id`) VALUES
+('Jm', 'Acantilado', 'Alano', 'Jenmaracntilado.alano@gmail.com', '$2y$10$XnNUUsLY80UVRHL8ED8wCOlMc7f9RUL6BRzoW192NAwbBkLSP2ST2', 'Male', 22, '0000-00-00', '2025-07-25', '', '', '', 'images.png', 'Verified', '', 53);
 
 --
 -- Indexes for dumped tables
@@ -657,7 +549,7 @@ ALTER TABLE `user_account`
 -- AUTO_INCREMENT for table `admin_account`
 --
 ALTER TABLE `admin_account`
-  MODIFY `user_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `user_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `barangay_blotter`
@@ -711,7 +603,7 @@ ALTER TABLE `gallery`
 -- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

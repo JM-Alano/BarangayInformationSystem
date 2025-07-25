@@ -134,11 +134,6 @@
         .edit-modal_blotter::-webkit-scrollbar {
             display: none;
         }
-        /* Verify Btn */
-
-        #verify_btn{
-
-        }
     </style>
 </head>
 
